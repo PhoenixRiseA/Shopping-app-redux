@@ -7,7 +7,7 @@ const CartButton = (props) => {
     dispatch(uiActions.cartState());
   };
 
-  const numberOfCartItems = useSelector((state)=>state.cart.cartItems.length);
+  const numberOfCartItems = useSelector((state)=>state.cart.totalQuantity);
   return (
     <button className={classes.button} onClick={showCartHandler}>
       <span>My Cart</span>
