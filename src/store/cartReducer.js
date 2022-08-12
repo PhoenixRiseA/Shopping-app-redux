@@ -1,15 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialCartState ={cartItems:[],totalAmount:0, cartIsShown:false};
+const initialCartState ={cartItems:[],totalAmount:0,totalQuantity:0};
 
 const cartSlice = createSlice({
     name:'cart',
     initialState:initialCartState,
     reducers:{
-        cartState(state){
-            state.cartIsShown = !state.cartIsShown;
-        },
+        
         addToCart(state,action){
+            state.totalQuantity++;
             const index = state.cartItems.findIndex((item)=>item.id===action.payload.id);
             console.log('index of item to add',index);
             const existingCartItem = state.cartItems[index];
@@ -31,6 +30,7 @@ const cartSlice = createSlice({
             
         },
         removeFromCart(state,action){
+            state.totalQuantity -= 1;
             const index = state.cartItems.findIndex((item)=> item.id===action.payload.id);
             console.log("index of item to remove/reduce", index);
             const existingCartItem = state.cartItems[index];

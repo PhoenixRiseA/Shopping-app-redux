@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import { cartActions } from '../../store/cartReducer';
 
 const CartItem = (props) => {
-  const { title, quantity, total, price, } = props.item;
+  const { title, quantity, total, price,id } = props.item;
   
   const dispatch = useDispatch();
   const increaseItemCountHandler = (item) =>{
@@ -14,7 +14,7 @@ const CartItem = (props) => {
   };
 
   return (
-    <li className={classes.item}>
+    <li className={classes.item} id={id}>
       <header>
         <h3>{title}</h3>
         <div className={classes.price}>
